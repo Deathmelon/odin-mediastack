@@ -8,7 +8,7 @@
 #                                                        #
 ##########################################################
 
-# Network, Start of ------------------------------------ #
+# Networks, Start of ------------------------------------ #
 networks:
   mediastack:
     name: odin-mediastack
@@ -18,7 +18,7 @@ networks:
       config:
       - subnet: ${DOCKER_SUBNET:?err}
         gateway: ${DOCKER_GATEWAY:?err}
-# Network, End of --------------------------------------- #
+# Networks, End of --------------------------------------- #
 
 services:
 
@@ -52,5 +52,22 @@ services:
     networks:
       - odin-mediastack
 # Gluetun, End of --------------------------------------- #
+
 # qBittorrent, Start of --------------------------------- #
+qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    restart: unless-stopped
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/qbittorrent:/config
+      - ${FOLDER_FOR_MEDIA:?err}:/data
+    environment:
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+      - UMASK=${UMASK:?err}
+      - TZ=${TIMEZONE:?err}
+      - WEBUI_PORT=${WEBUI_PORT_QBITTORRENT:?err}
+      - DOCKER_MODS=ghcr.io/themepark-dev/theme.park:qbittorrent
+      - TP_THEME=${TP_THEME:?err}
+    network_mode: "service:gluetun"                                      # Do NOT edit
 # qBittorrent, End of ----------------------------------- #
