@@ -8,7 +8,7 @@
 #                                                        #
 ##########################################################
 
-# Networks, Start of ------------------------------------ #
+# Networks, Start of ----------------------------------- #
 networks:
   mediastack:
     name: odin-mediastack
@@ -18,7 +18,7 @@ networks:
       config:
       - subnet: ${DOCKER_SUBNET:?err}
         gateway: ${DOCKER_GATEWAY:?err}
-# Networks, End of --------------------------------------- #
+# Networks, End of -------------------------------------- #
 
 services:
 
