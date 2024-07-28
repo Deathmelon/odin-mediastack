@@ -1,0 +1,26 @@
+##########################################################
+#                                                        #
+#  Docker Compose .YAML-fil for Odin/TrueNAS-server       #
+#                                                        #
+#  Inneholder:                                           #
+#  - qBittorrent                                         #
+#  - Gluetun                                             #
+#                                                        #
+##########################################################
+
+# Network, Start of ------------------------------------ #
+networks:
+  mediastack:
+    name: mediastack
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet: ${DOCKER_SUBNET:?err}
+        gateway: ${DOCKER_GATEWAY:?err}
+# Network, End of --------------------------------------- #
+
+# Gluetun, Start of ------------------------------------- #
+# Gluetun, End of --------------------------------------- #
+# qBittorrent, Start of --------------------------------- #
+# qBittorrent, End of ----------------------------------- #
