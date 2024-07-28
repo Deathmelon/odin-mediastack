@@ -10,7 +10,7 @@
 
 # Networks, Start of ----------------------------------- #
 networks:
-  mediastack:
+  odin-mediastack:
     name: odin-mediastack
     driver: bridge
     ipam:
@@ -55,7 +55,7 @@ services:
 # Gluetun, End of --------------------------------------- #
 
 # qBittorrent, Start of --------------------------------- #
-qbittorrent:
+  qbittorrent:
     image: lscr.io/linuxserver/qbittorrent:latest
     container_name: qbittorrent
     restart: unless-stopped
