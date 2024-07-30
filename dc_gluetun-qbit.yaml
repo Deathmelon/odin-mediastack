@@ -48,7 +48,7 @@ services:
       - FIREWALL_OUTBOUND_SUBNETS=${LOCAL_SUBNET:?err}
       - OPENVPN_USER=${VPN_USERNAME:?err}
       - OPENVPN_PASSWORD=${VPN_PASSWORD:?err}
-      - SERVER_COUNTRIES=${SERVER_COUNTRIES}
+      - SERVER_REGIONS=${SERVER_COUNTRIES}
       - VPN_TYPE=${VPN_TYPE}
     networks:
       - odin-mediastack
